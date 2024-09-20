@@ -28,7 +28,7 @@ return {
           palette = {},
           theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
         },
-        overrides = function(colors)
+        overrides = function()
           return { ["@variable.builtin"] = { italic = false } }
         end,
         theme = "dragon",
