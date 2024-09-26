@@ -5,38 +5,16 @@ return {
 
   -- Add Kanagawa
   {
-    "rebelot/kanagawa.nvim",
-    lazy = false,
-    priority = 1000,
+    "projekt0n/github-nvim-theme",
+    name = "github-theme",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      -- Load the colorscheme here
-      vim.cmd("colorscheme kanagawa-dragon")
-
-      -- You can configure the plugin here
-      require("kanagawa").setup({
-        compile = false,
-        undercurl = true,
-        commentStyle = { italic = true },
-        functionStyle = {},
-        keywordStyle = { italic = false },
-        statementStyle = { bold = false },
-        typeStyle = {},
-        transparent = false,
-        dimInactive = false,
-        terminalColors = true,
-        colors = {
-          palette = {},
-          theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
-        },
-        overrides = function()
-          return { ["@variable.builtin"] = { italic = false } }
-        end,
-        theme = "dragon",
-        background = {
-          dark = "dragon",
-          light = "lotus",
-        },
+      require("github-theme").setup({
+        -- ...
       })
+
+      vim.cmd("colorscheme github_dark_default")
     end,
   },
 }
