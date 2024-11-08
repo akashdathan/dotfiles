@@ -32,53 +32,30 @@ set notimeout
 
 " Which-key settings
 set which-key
-let g:WhichKey_FontSize = 16
-"let g:WhichKey_CommandColor = "#41ead4"
-"let g:WhichKey_PrefixColor = "#f335b2"
+let g:WhichKey_FontSize = 14
 let g:WhichKey_SortOrder = "by_key_prefix_first"
 
 let g:WhichKeyDesc_leader = "<leader> Leader key"
 
 let g:WhichKeyDesc_easymotion = "<leader>j Jump with Easymotion"
 
-let g:WhichKeyDesc_comment = "<leader>c Comment line"
-
-let g:WhichKeyDesc_window = "<leader>w Window splits"
-let g:WhichKeyDesc_window_split_vertically = "<leader>wv Split vertically"
-let g:WhichKeyDesc_window_split_horizontally = "<leader>wh Split horizontally"
-let g:WhichKeyDesc_window_split_unsplit = "<leader>wu Unsplit"
-let g:WhichKeyDesc_window_split_move_editor = "<leader>wm Move editor to opposite tab group"
-
 let g:WhichKeyDesc_action= "<leader>a Actions"
 let g:WhichKeyDesc_action_search = "<leader>as Open command modal"
 
-let g:WhichKeyDesc_file_nav = "<leader>f SearchEverywhere"
-
-let g:WhichKeyDesc_refactoring = "<leader>r Refactoring menu"
-
-let g:WhichKeyDesc_goto = "<leader>g Go to X"
-let g:WhichKeyDesc_goto_declaration = "<leader>gd Go to Definition"
-let g:WhichKeyDesc_goto_type_declaration = "<leader>gy Go to Type Definition"
-let g:WhichKeyDesc_goto_implementation = "<leader>gi Go to Implementation"
-let g:WhichKeyDesc_goto_usages = "<leader>gu Go to Usages"
-
-let g:WhichKeyDesc_errors = "<leader>e Error navigation"
-let g:WhichKeyDesc_errors_next = "<leader>en Go to next error in solution"
-let g:WhichKeyDesc_errors_prev = "<leader>ep Go to previous error in solution"
 
 
 "" Key mappings
 "" ========================================================
 
 " Tab navigation
-nnoremap <A-n> :tabnext<CR>
-nnoremap <A-p> :tabprev<CR>
+nnoremap <C-n> :tabnext<CR>
+nnoremap <C-p> :tabprev<CR>
 
 " Pane navigation
-nnoremap <A-h> <C-w>h
-nnoremap <A-l> <C-w>l
-nnoremap <A-k> <C-w>k
-nnoremap <A-j> <C-w>j
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-k> <C-w>k
+nnoremap <C-j> <C-w>j
 
 " Easy visual indentation
 vnoremap < <gv
@@ -88,33 +65,58 @@ map <Enter> o<ESC>
 "" Leader commands
 "" ========================================================
 
+" Code navigation
+nmap gi :action GotoImplementation<CR>
+nnoremap gn :action GotoNextError<CR>
+nnoremap gp :action GotoPreviousError<CR>
+
 " Comment lines
 map <leader>c <action>(CommentByLineComment)
+let g:WhichKeyDesc_comment = "<leader>c Comment line"
 
 " Jump around with easymotion
 map <leader>j <Plug>(easymotion-s)
 
 " Window splits
+let g:WhichKeyDesc_window = "<leader>w Window splits"
 map <leader>wv <Action>(SplitVertically)
 map <leader>ws <Action>(SplitHorizontally)
 map <leader>wu <Action>(Unsplit)
 map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
 
-" Actions
-map <leader>as <action>(SearchEverywhere)
 
-" File navigation
-map <leader>f <action>(FindInPath)
-
-" Refactoring
-map <leader>r <Action>(Refactorings.QuickListPopupAction)
-
-" Go to code
-nmap <leader>gd <Action>(GotoDeclaration)
-nmap <leader>gy <Action>(GotoTypeDeclaration)
-nmap <leader>gi <Action>(GotoImplementation)
-nmap <leader>gu <Action>(ShowUsages)
+" Useful Git actions
+map <leader>g :action Git.ContextMenu<cr>
 
 " Errors
+let g:WhichKeyDesc_errors = "<leader>e Error navigation"
+map <leader>ed :action ShowErrorDescription<cr>
 map <leader>en <Action>(ReSharperGotoNextErrorInSolution)
 map <leader>ep <Action>(ReSharperGotoPrevErrorInSolution)
+
+" File navigation
+let g:WhichKeyDesc_navigation = "<leader>f File Navigation"
+map <leader><leader> <Action>(RecentFiles)
+map <leader>ff <action>(GotoFile)
+map <leader>fr <action>(RecentFiles)
+map <leader>fs <action>(FindInPath)
+map <leader>fl <action>(RecentLocations)
+
+" Actions
+let g:WhichKeyDesc_actions = "<leader>a Actions"
+map <leader>as <action>(SearchEverywhere)
+map <leader>ar <Action>(Refactorings.QuickListPopupAction)
+map <leader>ac <action>(ShowIntentionActions)
+
+" Closing tabs
+nmap <leader>q :action CloseContent<cr>
+nmap <leader>Q :action ReopenClosedTab<cr>
+
+" Terminal
+nmap <leader>t :action ActivateTerminalToolWindow<cr>
+
+" Search
+nmap <leader>/ :action Find<cr>
+
+" Building, Running and Debugging
+nmap <leader>r :action RunAnything<cr>
