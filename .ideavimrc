@@ -17,7 +17,6 @@ set clipboard+=unnamed
 
 let mapleader = " "
 
-
 "" Plugin Settings
 "" ========================================================
 
@@ -32,17 +31,59 @@ set notimeout
 
 " Which-key settings
 set which-key
-let g:WhichKey_FontSize = 14
 let g:WhichKey_SortOrder = "by_key_prefix_first"
 
-let g:WhichKeyDesc_leader = "<leader> Leader key"
+" Explicitly center Which-Key dialog
+let g:WhichKey_CenteredLayout = 1
+let g:WhichKey_CenterSpacing = 5
+let g:which_key_centered = 1
 
+"" Which-key Descriptions
+"" ========================================================
+
+" Easymotion
 let g:WhichKeyDesc_easymotion = "<leader>j Jump with Easymotion"
 
-let g:WhichKeyDesc_action= "<leader>a Actions"
+" Actions
+let g:WhichKeyDesc_action = "<leader>a Actions"
 let g:WhichKeyDesc_action_search = "<leader>as Open command modal"
+let g:WhichKeyDesc_action_refactor = "<leader>ar Refactoring options"
+let g:WhichKeyDesc_action_context = "<leader>ac Context actions"
 
+" Commenting
+let g:WhichKeyDesc_comment = "<leader>c Comment line"
 
+" Window splits
+let g:WhichKeyDesc_window = "<leader>w Window splits"
+let g:WhichKeyDesc_window_vertical = "<leader>wv Split vertically"
+let g:WhichKeyDesc_window_horizontal = "<leader>ws Split horizontally"
+let g:WhichKeyDesc_window_unsplit = "<leader>wu Unsplit window"
+let g:WhichKeyDesc_window_move = "<leader>wm Move to opposite tab group"
+
+" Errors
+let g:WhichKeyDesc_errors_description = "<leader>d Show error description"
+
+" File Navigation
+let g:WhichKeyDesc_navigation = "<leader>f File Navigation"
+let g:WhichKeyDesc_navigation_recent = "<leader>e Recent files"
+let g:WhichKeyDesc_navigation_find = "<leader>ff Find file"
+let g:WhichKeyDesc_navigation_search = "<leader>fs Find in path"
+let g:WhichKeyDesc_navigation_locations = "<leader>fl Recent locations"
+
+" Closing tabs
+let g:WhichKeyDesc_close_tabs = "<leader>q Close and reopen tabs"
+
+" Git Actions
+let g:WhichKeyDesc_git = "<leader>g Git actions"
+
+" Terminal
+let g:WhichKeyDesc_terminal = "<leader>t Open terminal"
+
+" Search
+let g:WhichKeyDesc_search = "<leader>/ Search"
+
+" Build and Run
+let g:WhichKeyDesc_run = "<leader>r Build, Run, and Debug"
 
 "" Key mappings
 "" ========================================================
@@ -65,58 +106,74 @@ map <Enter> o<ESC>
 "" Leader commands
 "" ========================================================
 
-" Code navigation
-nmap gi :action GotoImplementation<CR>
-nnoremap gn :action GotoNextError<CR>
-nnoremap gp :action GotoPreviousError<CR>
-
-" Comment lines
-map <leader>c <action>(CommentByLineComment)
-let g:WhichKeyDesc_comment = "<leader>c Comment line"
-
-" Jump around with easymotion
-map <leader>j <Plug>(easymotion-s)
-
-" Window splits
-let g:WhichKeyDesc_window = "<leader>w Window splits"
-map <leader>wv <Action>(SplitVertically)
-map <leader>ws <Action>(SplitHorizontally)
-map <leader>wu <Action>(Unsplit)
-map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
-
-
-" Useful Git actions
-map <leader>g :action Git.ContextMenu<cr>
-
-" Errors
-let g:WhichKeyDesc_errors = "<leader>e Error navigation"
-map <leader>ed :action ShowErrorDescription<cr>
-map <leader>en <Action>(ReSharperGotoNextErrorInSolution)
-map <leader>ep <Action>(ReSharperGotoPrevErrorInSolution)
-
 " File navigation
-let g:WhichKeyDesc_navigation = "<leader>f File Navigation"
 map <leader><leader> <Action>(RecentFiles)
 map <leader>ff <action>(GotoFile)
 map <leader>fr <action>(RecentFiles)
 map <leader>fs <action>(FindInPath)
 map <leader>fl <action>(RecentLocations)
 
+" Code navigation
+nmap gi :action GotoImplementation<CR>
+
+" Comment lines
+map gc <action>(CommentByLineComment)
+
+" Jump around with easymotion
+map <leader>j <Plug>(easymotion-s)
+
+" Window splits
+map <leader>ws <Action>(SplitVertically)
+map <leader>wu <Action>(Unsplit)
+map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
+
+" Useful Git actions
+map <leader>g :action Git.ContextMenu<cr>
+
+" Errors
+map <leader>d :action ShowErrorDescription<cr>
+
 " Actions
-let g:WhichKeyDesc_actions = "<leader>a Actions"
 map <leader>as <action>(SearchEverywhere)
 map <leader>ar <Action>(Refactorings.QuickListPopupAction)
 map <leader>ac <action>(ShowIntentionActions)
-
-" Closing tabs
-nmap <leader>q :action CloseContent<cr>
-nmap <leader>Q :action ReopenClosedTab<cr>
 
 " Terminal
 nmap <leader>t :action ActivateTerminalToolWindow<cr>
 
 " Search
-nmap <leader>/ :action Find<cr>
+nmap / :action Find<cr>
 
 " Building, Running and Debugging
 nmap <leader>r :action RunAnything<cr>
+
+" Additional Helpful Mappings
+"" ========================================================
+
+" Quick save
+nmap <leader>s :w<CR>
+map U <C-R>
+
+nnoremap J }
+nnoremap K {
+
+nnoremap <TAB> :action PreviousTab<CR>
+nnoremap <S-TAB> :action NextTab<CR>
+
+" Show documentation
+nmap K :action QuickDocumentation<CR>
+
+" Show parameter info
+nmap <leader>p :action ParameterInfo<CR>
+
+" Refactor
+nmap <leader>rn :action RenameElement<CR>
+nmap <leader>rv :action IntroduceVariable<CR>
+nmap <leader>rm :action ExtractMethod<CR>
+nmap <leader>ri :action ExtractInterface<CR>
+
+" Toggle line breakpoint
+nmap <leader>b :action ToggleLineBreakpoint<CR>
+
+" Show usages
+nmap <leader>u :action FindUsages<CR>
