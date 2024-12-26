@@ -17,3 +17,22 @@ vim.keymap.set("n", "<leader>tf", ":TypescriptFixAll<CR>", { desc = "Fix all" })
 -- Buffer navigation
 vim.keymap.set("n", "<Tab>", ":bnext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { desc = "Previous buffer" })
+
+-- Navigate diagnostics
+vim.keymap.set("n", "ge", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+vim.keymap.set("n", "gE", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
+
+-- Navigate Git changes (if using gitsigns.nvim)
+vim.keymap.set("n", "gn", function()
+  local gitsigns = package.loaded.gitsigns
+  if gitsigns then
+    gitsigns.next_hunk()
+  end
+end, { desc = "Go to next git change" })
+
+vim.keymap.set("n", "gN", function()
+  local gitsigns = package.loaded.gitsigns
+  if gitsigns then
+    gitsigns.prev_hunk()
+  end
+end, { desc = "Go to previous git change" })

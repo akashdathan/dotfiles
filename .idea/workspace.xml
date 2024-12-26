@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c3c70a6-8d2c-4db2-9b93-7c3e8529887f" name="Changes" comment="ideavim" />
+    <list default="true" id="3c3c70a6-8d2c-4db2-9b93-7c3e8529887f" name="Changes" comment="ideavim">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nvim/.config/nvim/lazy-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/nvim/.config/nvim/lazy-lock.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,12 +22,12 @@
     &quot;assignee&quot;: &quot;akashdathan&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/akashdathan/dotconfig.git&quot;,
-    &quot;accountId&quot;: &quot;e0d35d0d-0aa0-4720-a54b-433d5eba8bf1&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/akashdathan/dotfiles.git",
+    "accountId": "e0d35d0d-0aa0-4720-a54b-433d5eba8bf1"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -50,7 +53,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-WS-242.21829.149" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23339.15" />
       </set>
     </attachedChunks>
   </component>
@@ -79,6 +82,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ideavim" />
-    <option name="LAST_COMMIT_MESSAGE" value="ideavim" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>
