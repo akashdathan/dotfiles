@@ -1,6 +1,5 @@
 return {
   -- Other plugins...
-
   -- LazyGit plugin
   {
     "kdheepak/lazygit.nvim",
