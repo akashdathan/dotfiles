@@ -2,6 +2,7 @@
 if vim.g.vscode then
     -- VSCode Neovim
     require "user.vscode_keymaps"
+    require "plugins.hop"
 else
     -- Ordinary Neovim
     require("config.lazy")
