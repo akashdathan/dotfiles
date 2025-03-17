@@ -22,7 +22,7 @@ return {
       },
       sections = {
         lualine_a = {},  -- Remove mode indicator
-        lualine_b = {},  -- Remove git branch
+        lualine_b = { { "branch", icon = "" } },  -- Show git branch without icon
         lualine_c = { { "filename", path = 1 } },  -- Show relative file path
         lualine_x = { "filetype" },  -- Show only filetype
         lualine_y = {},  -- Remove progress
