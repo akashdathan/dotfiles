@@ -1,0 +1,151 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-2": "workspace::ToggleLeftDock",
+      "cmd-3": "workspace::ToggleBottomDock",
+      "cmd-4": "workspace::ToggleRightDock",
+
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "Dock || Terminal || Editor",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-k": "terminal::ScrollPageUp",
+      "cmd-j": "terminal::ScrollPageDown"
+    }
+  },
+  // File panel (netrw)
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "space space": "file_finder::Toggle",
+      "space w": "workspace::SaveAll",
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "x": "project_panel::Cut",
+      "y": "project_panel::Copy",
+      "p": "project_panel::Paste",
+
+      // Navigate between panel
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "vim_mode == normal || vim_mode == visual",
+    "bindings": {
+      "s": "vim::PushSneak",
+      "S": "vim::PushSneakBackward",
+
+      // Move to start/end of line
+      "H": ["workspace::SendKeystrokes", "^"],
+      "L": ["workspace::SendKeystrokes", "$"]
+    }
+  },
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      "space space": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      "space z": "workspace::ToggleCenteredLayout",
+
+      // Ctrl jklk to move between panes
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+
+      "space o": "tab_switcher::Toggle",
+
+      "space t": "workspace::NewCenterTerminal",
+
+      // +LSP
+      "space .": "editor::ToggleCodeActions",
+      "space c a": "editor::ToggleCodeActions",
+      "space c r": "editor::Rename",
+
+      "cmd-1": "editor::ToggleFold",
+      "space f a": "editor::FoldAll",
+      "space f u": "editor::UnfoldAll",
+
+      "g d": "editor::GoToDefinition",
+      "g D": "editor::GoToDefinitionSplit",
+      "g i": "editor::GoToImplementation",
+      "g I": "editor::GoToImplementationSplit",
+      "g t": "editor::GoToTypeDefinition",
+      "g T": "editor::GoToTypeDefinitionSplit",
+      "g r": "editor::FindAllReferences",
+
+      // Go to next/prev error
+      "g e": "editor::GoToDiagnostic",
+      "g E": "editor::GoToPreviousDiagnostic",
+
+      // panels
+      "space s": "outline_panel::ToggleFocus",
+      "space a": "agent::ToggleFocus",
+      "space e": "project_panel::ToggleFocus",
+
+      // Git
+      "space g g": "git_panel::ToggleFocus",
+      "space g p": "git::Push",
+      "space g f": "git::Fetch",
+      "space g d": "git::Diff",
+      "space g b": "git::CheckoutBranch",
+      "space g c": "git::ExpandCommitEditor",
+
+      // Diagnostic
+      "space x": "diagnostics::Deploy",
+
+      // Tasks
+      "space r": "task::Spawn",
+
+      // Git prev/next hunk
+      "g n": "editor::GoToHunk",
+      "g N": "editor::GoToPreviousHunk",
+
+      "space d": "editor::ToggleSelectedDiffHunks",
+
+      // + Buffers
+      // Switch between buffers
+      "ctrl-shift-tab": "pane::ActivatePreviousItem",
+      "ctrl-tab": "pane::ActivateNextItem",
+
+      // Close
+      "space b d": "pane::CloseActiveItem",
+      "space b o": "pane::CloseInactiveItems",
+
+      // File finder
+      "space space": "file_finder::Toggle",
+
+      // Save all
+      "space w": "workspace::SaveAll",
+
+      // Project search
+      "space /": "pane::DeploySearch",
+
+      "enter": "editor::NewlineBelow"
+    }
+  }
+]
